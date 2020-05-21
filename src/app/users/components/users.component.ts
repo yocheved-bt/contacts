@@ -1,13 +1,11 @@
 import { UsersService } from './../users.service';
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
-
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { User } from '../uesr.model';
 
 @Component({
   selector: 'mof-users',
   template: `
-    <div *ngIf="users$ | async as users; else loading">
+    <div *ngIf=" users; else loading">
       <section class="user no-padding-top">
         <div class="container">
           <div class="search-hero">
@@ -21,9 +19,11 @@ import { User } from '../uesr.model';
             />
           </div>
           <mof-user
-            *ngFor="let user of users | filter: searchText"
+          *ngFor="let user of users; trackBy: trackByFn | filter: searchText "
             [user]="user"
-          ></mof-user>
+            (delete)="deleteUser($event)"
+            class="example-item">
+          </mof-user>
         </div>
       </section>
     </div>
@@ -32,15 +32,23 @@ import { User } from '../uesr.model';
       <mof-loading isLoading="loading"></mof-loading>
     </ng-template>
   `,
-  styles: [``],
+  styles: [` `],
 })
 export class UsersComponent implements OnInit {
-  searchText: string;
-  users$: Observable<User[]>;
 
+  searchText: string;
+  users:User[];
   constructor(private usersService: UsersService) {}
 
   ngOnInit() {
-    this.users$ = this.usersService.getUsers();
+    this.users = this.usersService.users;
+  }
+
+  deleteUser(userId){
+    this.usersService.deleteUser(userId);
+  }
+
+  trackByFn(index:number, el:any): number {
+    return el.id;
   }
 }

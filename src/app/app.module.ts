@@ -32,7 +32,7 @@ import { NavbarComponent } from './users/components/navbar.component';
     FormsModule,
     Ng2SearchPipeModule,
     AppRoutingModule,
-    CoreModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],

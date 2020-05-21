@@ -11,9 +11,13 @@ import { User } from './uesr.model';
 export class UsersService {
   users: User[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+   const subscribe = this.getUsers().subscribe(() =>{
+      subscribe.unsubscribe();
+    });
+  }
 
-  getUsers(): Observable<User[]> {
+  getUsers() {
     const url = 'https://randomuser.me/api/?results=50';
 
     let headers = new HttpHeaders();
@@ -26,11 +30,14 @@ export class UsersService {
           users['results'].forEach(_user => {
             this.users.push(_user);
           });
-          return this.users;
+
         }));
   }
 
   getUserByID(id:string):User{
     return this.users.find(obj =>obj.login.salt === id);
+  }
+  deleteUser(id:string){
+    this.users.splice(this.users.findIndex(item => item.login.salt === id), 1)
   }
 }
