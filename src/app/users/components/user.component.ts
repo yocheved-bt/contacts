@@ -10,24 +10,20 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
         <div class="project-title d-flex align-items-center">
           <div class="image has-shadow"><img [src]="user?.picture?.thumbnail" [alt]="user?.name?.first" class="img-fluid"></div>
           <div class="text">
-            <h3 [routerLink]="['/user', user.login?.salt]" class="name-title">{{user?.name?.title}} {{user?.name?.first}} {{user?.name?.last}}</h3>
+            <h3 [routerLink]="['/user', id]" class="name-title">{{user?.name?.title}} {{user?.name?.first}} {{user?.name?.last}}</h3>
              <div class="details text">
-               <i class="fa fa-envelope padding"></i> <p>{{user?.email}}</p> |
+              <a href="mailto:{{ user?.email }}"> <i  class="fa fa-envelope padding"></i> <p>{{user?.email}}</p></a> |
                <i class="fa fa-phone padding"></i> <p>{{user?.cell}}</p>
             </div>
           </div>
         </div>
       </div>
       <div class="right-col col-lg-3 d-flex align-items-center">
-      <a [routerLink]="['/user', user.login?.salt]" routerLinkActive="active" class="nav-link" title="view more details">
+      <a [routerLink]="['/user', id]"  title="view more details">
         <i class="fa fa-eye fa-2x"></i>
       </a>
-      <a title ="delete this user" (click)="deleteUser(user.login.salt)" class="action">
-        <i class="fa fa-trash fa-2x" ></i>
-      </a>
-      <a (click)=add($event) class="action">
-        <i style="margin-right:15px; color:#999;" class="fa fa-user-plus fa-2x icon"></i>
-       </a>
+      <a [mofDelete] = "id"></a>
+      <a [mofAdd] = "id" ></a>
       </div>
     </div>
 </div>
@@ -65,6 +61,10 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
       margin-left: 65px
   }
 }
+.disabled{
+  opacity: 0.5;
+  cursor:not-allowed;
+}
 .name-title:hover {
   cursor: pointer;
   text-decoration: underline;
@@ -88,15 +88,18 @@ width:60px;
   }
   ` ]
 })
-export class UserComponent   {
+export class UserComponent  implements OnInit {
 
   @Input() user:User;
   @Output()
   delete: EventEmitter<any> = new EventEmitter<any>();
-
-  deleteUser(id){
-    this.delete.emit(id);
+  id:string;
+  ngOnInit(): void {
+    this.id = this.user.login.salt
   }
+  // deleteUser(id){
+  //   this.delete.emit(id);
+  // }
   add(target){
     console.log(target);
   }

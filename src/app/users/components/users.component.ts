@@ -8,7 +8,7 @@ import { User } from '../uesr.model';
     <div *ngIf=" users; else loading">
       <section class="user no-padding-top">
         <div class="container">
-          <div class="search-hero">
+          <div class="search-user">
             <input
               class="form-control"
               type="text"
@@ -19,9 +19,8 @@ import { User } from '../uesr.model';
             />
           </div>
           <mof-user
-          *ngFor="let user of users; trackBy: trackByFn | filter: searchText "
+          *ngFor="let user of users | filter: searchText trackBy: trackByFn "
             [user]="user"
-            (delete)="deleteUser($event)"
             class="example-item">
           </mof-user>
         </div>
@@ -32,7 +31,12 @@ import { User } from '../uesr.model';
       <mof-loading isLoading="loading"></mof-loading>
     </ng-template>
   `,
-  styles: [` `],
+  styles: [`
+  .search-user{
+    margin-bottom:20px;
+    margin-top:30px;
+  }
+  `],
 })
 export class UsersComponent implements OnInit {
 
@@ -42,10 +46,6 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.users = this.usersService.users;
-  }
-
-  deleteUser(userId){
-    this.usersService.deleteUser(userId);
   }
 
   trackByFn(index:number, el:any): number {

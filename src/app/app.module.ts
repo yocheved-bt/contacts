@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +16,8 @@ import { ProfileComponent } from './users/components/profile.component';
 import { ContainerComponent } from './users/components/container.component';
 import { SearchComponent } from './users/components/search.component';
 import { NavbarComponent } from './users/components/navbar.component';
+import { DeleteDirective } from './users/directives/delete.directive';
+import { AddDirective } from './users/directives/add.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,9 @@ import { NavbarComponent } from './users/components/navbar.component';
     ProfileComponent,
     ContainerComponent,
     SearchComponent,
-    NavbarComponent
+    NavbarComponent,
+    DeleteDirective,
+    AddDirective
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,9 @@ import { NavbarComponent } from './users/components/navbar.component';
     FormsModule,
     Ng2SearchPipeModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
