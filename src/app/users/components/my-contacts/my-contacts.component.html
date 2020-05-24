@@ -1,5 +1,4 @@
-users: {{users}}
-<div *ngIf="users; else loading" class="container">
+<div *ngIf="users.length > 0; else loading" class="container">
   <div class="row card-deck">
     <div *ngFor="let user of users; trackBy: trackByFn" class="col-lg-3 col-md-4 col-sm-6">
       <div class="panel panel-default userlist">
@@ -28,6 +27,13 @@ users: {{users}}
 
 </div>
 <ng-template #loading>
-  <div style="height:180px; background-color: red;">dddddddddddddddddddddd</div>
+  <div class="empty-users">
+  <h3 class="title">Your contacts empty</h3>
+
+  <a [routerLink]="['/home']"><i class="fa fa-plus"></i> For add contact</a>
+</div>
 
   </ng-template>
+
+
+

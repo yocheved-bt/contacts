@@ -4,6 +4,13 @@
   clear: both;
   margin: 40px auto;
 }
+.title{
+  color: #999;
+
+}
+.empty-users{
+  margin: 50px;
+}
 .userpic {
   height: 100px;
   width: 100px;
