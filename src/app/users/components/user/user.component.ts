@@ -12,7 +12,7 @@ export class UserComponent  implements OnInit {
   id:string;
 
   ngOnInit(): void {
-    this.id = this.user.login.salt
+    this.id = this.user?.login.salt
   }
 
 }

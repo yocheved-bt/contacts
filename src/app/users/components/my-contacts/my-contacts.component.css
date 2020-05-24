@@ -6,10 +6,13 @@
 }
 .title{
   color: #999;
-
 }
 .empty-users{
   margin: 50px;
+}
+.panel-footer a{
+  font-size: x-large;
+  margin-left: 10px;
 }
 .userpic {
   height: 100px;

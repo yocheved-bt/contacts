@@ -10,7 +10,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-
   constructor() { }
 
   ngOnInit(): void {

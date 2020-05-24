@@ -1,12 +1,14 @@
-<div *ngIf=" users; else loading">
+<div *ngIf="users.length > 0; else loading">
   <section class="user">
     <div class="container">
-      <h3 class="title">All contacts</h3>
+      <h3 class="title">List of all contacts</h3>
       <div class="search-user">
         <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
           placeholder="Start searching" />
       </div>
-      <mof-user *ngFor="let user of users | filter: searchText trackBy: trackByFn " [user]="user" class="example-item">
+      <mof-user
+            *ngFor="let user of users | filter: searchText trackBy: trackByFn"
+            [user]="user" class="example-item">
       </mof-user>
     </div>
   </section>

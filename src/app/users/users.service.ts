@@ -16,10 +16,11 @@ export class UsersService {
     const subscribe = this.getUsers().subscribe(() => {
       subscribe.unsubscribe();
     });
+    this.getMyUsers();
   }
 
   getUsers() {
-    const url = 'https://randomuser.me/api/?results=300';
+    const url = 'https://randomuser.me/api/?results=500';
 
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
@@ -35,6 +36,10 @@ export class UsersService {
       );
   }
 
+  getMyUsers(){
+        this.myUsers = JSON.parse(localStorage.getItem('myUsers')) || [];
+    }
+
   // get user from users list
   getUserByID(id: string): User {
     return this.users.find((obj) => obj.login.salt === id) || null;
@@ -47,18 +52,16 @@ export class UsersService {
       return false;
     }
   }
-  deleteUser(id: string) {
-    this.users.splice(
-      this.users.findIndex((item) => item.login.salt === id),1);
-    this.myUsers.splice(
-      this.users.findIndex((item) => item.login.salt === id),1);
-  }
-removeUserFromMyUsers(id:string){
+
+removeUser(id:string){
   this.myUsers.splice(
-    this.users.findIndex((item) => item.login.salt === id),1);
+    this.myUsers.findIndex((item) => item.login.salt === id),1);
+    localStorage.setItem(`myUsers`, JSON.stringify(this.myUsers));
 }
   addUser(id: string) {
     const user: User = this.getUserByID(id);
     this.myUsers.push(user);
+    localStorage.setItem(`myUsers`, JSON.stringify(this.myUsers));
+
   }
 }

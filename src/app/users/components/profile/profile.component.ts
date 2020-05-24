@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit, OnDestroy{
     }
   }
   navigate(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/contacts']);
   }
   ngOnDestroy() {
     this.subscribe.unsubscribe();

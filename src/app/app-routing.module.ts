@@ -7,9 +7,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'contacts',
     component: UsersComponent,
-    data: { title: 'Home' }
+    data: { title: 'Contacts' }
   },
   {
     path: 'my-contacts',
@@ -17,13 +17,13 @@ const routes: Routes = [
     data: { title: 'My Contacts' }
   },
   {
-    path: 'user/:id',
+    path: 'profile/:id',
     component: ProfileComponent,
     data: { title: 'Profile' }
 
   },
   { path: '',
-      redirectTo: '/home',
+      redirectTo: '/contacts',
       pathMatch: 'full'
   }
 ];

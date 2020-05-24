@@ -13,7 +13,9 @@
   font-size: 15px;
   font-weight: bold;
 }
-
+.fa-map-marker{
+  padding-right: 10px;
+}
 .info {
   margin-top: 30px;
 }

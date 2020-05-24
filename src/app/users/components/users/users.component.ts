@@ -1,5 +1,5 @@
 import { UsersService } from '../../users.service';
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../uesr.model';
 
 @Component({
@@ -17,13 +17,16 @@ import { User } from '../../uesr.model';
   ],
 })
 export class UsersComponent implements OnInit {
+  //@ViewChild('user',{static:true}) user:User;
   searchText: string;
   users: User[];
+  //fieldsFilter:any;
 
   constructor(private usersService: UsersService) {}
 
   ngOnInit() {
     this.users = this.usersService.users;
+   // this.fieldsFilter = [{'first': this.user?.name?.first},{'last':this.user?.name?.last}];
   }
 
   trackByFn(index: number, el: any): number {

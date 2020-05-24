@@ -18,7 +18,6 @@ import { SearchComponent } from './users/components/search.component';
 import { NavbarComponent } from './users/components/navbar/navbar.component';
 import { DeleteDirective } from './users/directives/delete.directive';
 import { AddDirective } from './users/directives/add.directive';
-import { RemoveUserDirective } from './users/directives/remove-user.directive';
 
 
 @NgModule({
@@ -32,9 +31,8 @@ import { RemoveUserDirective } from './users/directives/remove-user.directive';
     SearchComponent,
     NavbarComponent,
     DeleteDirective,
-    AddDirective,
-    RemoveUserDirective
-  ],
+    AddDirective
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,

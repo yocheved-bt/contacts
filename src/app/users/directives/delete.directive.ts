@@ -17,8 +17,8 @@ export class DeleteDirective implements OnInit {
 
   @HostListener('click', ['$event'])
   delete() {
-      this.usersService.deleteUser(this.id);
-      this.toastr.info("Successfully deleted user", "Delete User")
+    this.usersService.removeUser(this.id);
+    this.toastr.info("Successfully removed user from your contacts", "Remove User");
   }
 
   constructor(
@@ -34,7 +34,7 @@ export class DeleteDirective implements OnInit {
   addStyleIcon() {
     const tagIcon = this.rendrer.createElement('i');
     this.rendrer.addClass(tagIcon, "fa" );
-    this.rendrer.addClass(tagIcon, "fa-trash" );
+    this.rendrer.addClass(tagIcon, "fa-user-times" );
     this.rendrer.appendChild(this.hostElement.nativeElement , tagIcon);
     this.rendrer.setAttribute(this.hostElement.nativeElement,"title","delete this user")
   }
