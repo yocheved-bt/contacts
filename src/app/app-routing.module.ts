@@ -20,7 +20,6 @@ const routes: Routes = [
     path: 'profile/:id',
     component: ProfileComponent,
     data: { title: 'Profile' }
-
   },
   { path: '',
       redirectTo: '/contacts',

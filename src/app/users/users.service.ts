@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -20,7 +19,7 @@ export class UsersService {
   }
 
   getUsers() {
-    const url = 'https://randomuser.me/api/?results=500';
+    const url = 'https://randomuser.me/api/?results=300';
 
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
@@ -29,7 +28,7 @@ export class UsersService {
       .get<User[]>(url, { headers })
       .pipe(
         map((users: User[]) => {
-          users['results'].forEach((_user) => {
+          users['results'].forEach((_user:User) => {
             this.users.push(_user);
           });
         })

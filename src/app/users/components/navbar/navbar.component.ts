@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
-
 @Component({
   selector: 'mof-navbar',
   templateUrl: 'navbar.component.html',
@@ -13,15 +12,15 @@ export class NavbarComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
+  ngOnInit(): void {
+    this.getNavTitle();
+  }
+
   getNavTitle() {
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .forEach((e) => {
         this.routeData = this.route.root.firstChild.snapshot.data;
       });
-  }
-
-  ngOnInit(): void {
-    this.getNavTitle();
   }
 }

@@ -3,14 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'mof-container',
   template: `
-    <div class="container contacts">
+    <div class="container">
       <router-outlet></router-outlet>
     </div>
   `,
   styles: [`
-  .contacts{
-    margin-top:5%;
-  }
+      .container{
+        margin-top:3%;
+      }
   `],
 })
 export class ContainerComponent {}

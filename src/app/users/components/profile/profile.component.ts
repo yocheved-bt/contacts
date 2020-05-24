@@ -7,38 +7,33 @@ import { User } from '../../uesr.model';
 @Component({
   selector: 'mof-profile',
   templateUrl: 'profile.component.html',
-  styleUrls:['profile.component.css']
+  styleUrls: ['profile.component.css'],
 })
-export class ProfileComponent implements OnInit, OnDestroy{
+export class ProfileComponent implements OnInit, OnDestroy {
+  user_id: string;
+  user: User;
+  subscribe: Subscription;
 
-  user_id:string;
-  user:User;
-  subscribe:Subscription;
-
-  constructor(private userService:UsersService,
-              private route:ActivatedRoute,
-              private router:Router
-              ) { }
+  constructor(
+    private userService: UsersService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
   getRouteParam() {
-     this.subscribe = this.route.params.subscribe(params => {
+    this.subscribe = this.route.params.subscribe((params) => {
       this.user_id = params['id'];
-   });
+    });
   }
   ngOnInit(): void {
     this.getRouteParam();
     this.user = this.userService.getUserByID(this.user_id);
-    this.isEmptyUser();
-  }
-  isEmptyUser(){
-    if(!this.user){
-      this.navigate()
+
+    if (!this.user) {
+      this.router.navigate(['/contacts']);
     }
   }
-  navigate(){
-    this.router.navigate(['/contacts']);
-  }
+
   ngOnDestroy() {
     this.subscribe.unsubscribe();
   }
-
 }

@@ -9,23 +9,15 @@ import { User } from '../../uesr.model';
   styleUrls: ['my-contacts.component.css']
 })
 export class MyContactsComponent implements OnInit {
-  isValid;
-  users: User[] = [];
+
+  users: User[];
   constructor(private UsersService: UsersService) {}
 
   ngOnInit(): void {
     this.users = this.UsersService.myUsers || null;
-    if(this.users.length > 0){
-      this.isValid = true
-    }
-    else
-    this.isValid=false;
   }
   trackByFn(index: number, el: any): number {
     return el.id;
-  }
-  removeUser(){
-    this.UsersService
   }
 
 }

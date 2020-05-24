@@ -1,21 +1,19 @@
-import { UsersService } from './../users.service';
-import { Directive, Input, OnInit, ElementRef, Renderer2, HostListener, HostBinding, ChangeDetectorRef, DoCheck } from '@angular/core';
+import { Directive, Input, OnInit, ElementRef, Renderer2, HostListener, DoCheck } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { UsersService } from './../users.service';
 
 @Directive({
   selector: '[mofAdd]'
 })
 export class AddDirective implements OnInit, DoCheck {
-theme;
+
   @Input('mofAdd') id: string;
-  @HostBinding('class.someClass') someField: boolean = false;
   @HostListener('click', ['$event'])
+
   addUser() {
     this.usersService.addUser(this.id);
     this.disabledBtn();
     this.toastr.info("Added user to your contacts", "Add User");
-    this.someField = true; // set class `someClass` on `<body>`
-    console.log('theme ----',this.someField);
   }
 
   constructor(private usersService: UsersService,
@@ -31,7 +29,6 @@ theme;
      this.disabledBtn();
     }
   }
-
   addIcon(){
     const tagIcon = this.renderer.createElement('i');
     this.renderer.addClass(tagIcon, "fa" );

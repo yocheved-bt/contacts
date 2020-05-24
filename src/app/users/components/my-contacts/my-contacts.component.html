@@ -5,7 +5,8 @@
         <div class="panel-body text-center">
           <div class="userprofile">
             <div class="userpic">
-              <img [src]="user?.picture?.thumbnail" [alt]="user?.name?.first" class="userpicimg" />
+              <img [src]="user?.picture?.thumbnail"
+                   [alt]="user?.name?.first" class="userpicimg" />
             </div>
             <h3 class="username">
               {{ user?.name?.title }} {{ user?.name?.first }} {{ user?.name?.last }}
@@ -16,22 +17,18 @@
           <p>{{ user?.cell }}</p>
         </div>
         <div class="panel-footer">
-          <a [routerLink]="['/profile', user.login.salt]"  title="view more details">
+          <a [routerLink]="['/profile', user.login.salt]" title="view more details">
             <i class="fa fa-eye"></i> </a>
-            <a [mofDelete]="user.login.salt"></a>
+          <a [mofDelete]="user.login.salt"></a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <ng-template #loading>
   <div class="empty-users">
-  <h3 class="title">Your contacts empty</h3>
-
-  <a [routerLink]="['/contacts']"><i class="fa fa-plus"></i> For add contact</a>
-</div>
-
-  </ng-template>
-
-
-
+    <h3 class="title">Your contacts empty</h3>
+    <a [routerLink]="['/contacts']"><i class="fa fa-plus"></i> For add contact</a>
+  </div>
+</ng-template>

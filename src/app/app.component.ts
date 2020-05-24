@@ -5,9 +5,6 @@ import { Component } from '@angular/core';
   template: `
     <mof-navbar></mof-navbar>
     <mof-container></mof-container>
-      `,
-  styles:[``]
+      `
 })
-export class AppComponent {
-
-}
+export class AppComponent {}

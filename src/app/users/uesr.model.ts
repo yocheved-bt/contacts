@@ -12,7 +12,6 @@ export interface User {
   cell:       string;
   id?:         ID;
   picture:    Picture;
-  //nat:        string;
 }
 
 export interface Dob {

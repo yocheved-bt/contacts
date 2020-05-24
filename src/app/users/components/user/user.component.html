@@ -1,23 +1,31 @@
-<div class="user">
+<div *ngIf="user" class="user">
   <div class="row has-shadow">
-   <div class="left-col col-lg-9 d-flex align-items-center justify-content-between">
-     <div class="project-title d-flex align-items-center">
-       <div class="image has-shadow"><img [src]="user?.picture?.thumbnail" [alt]="user?.name?.first" class="img-fluid"></div>
-       <div class="text">
-         <h3 [routerLink]="['/profile', id]" class="name-title">{{user?.name?.title}} {{user?.name?.first}} {{user?.name?.last}}</h3>
+    <div class="left-col col-lg-9 d-flex align-items-center justify-content-between">
+      <div class="project-title d-flex align-items-center">
+        <div class="image has-shadow">
+          <img [src]="user.picture?.thumbnail" [alt]="user.name?.first" class="img-fluid">
+        </div>
+        <div class="text">
+          <h3 [routerLink]="['/profile', id]" class="name-title">
+            {{user.name?.title}} {{user.name?.first}} {{user?.name?.last}}
+          </h3>
           <div class="details text">
-           <a class="overflow" href="mailto:{{ user?.email }}">
-             <i class="fa fa-envelope padding"></i> <p>{{user?.email}}</p></a><p class="pipe">|</p>
-             <i class="fa fa-phone padding"></i> <p>{{user?.cell}}</p>
-         </div>
-       </div>
-     </div>
-   </div>
-   <div class="right-col col-lg-3 d-flex align-items-center actions">
-   <a [routerLink]="['/profile', id]"  title="view more details">
-     <i class="fa fa-eye"></i>
-   </a>
-   <a [mofAdd] = "id" ></a>
-   </div>
- </div>
+            <a class="overflow" href="mailto:{{ user.email }}">
+              <i class="fa fa-envelope padding"></i>
+              <p>{{user.email}}</p>
+            </a>
+            <p class="pipe">|</p>
+            <i class="fa fa-phone padding"></i>
+            <p>{{user.cell}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col col-lg-3 d-flex align-items-center actions">
+      <a [routerLink]="['/profile', id]" title="view more details">
+        <i class="fa fa-eye"></i>
+      </a>
+      <a [mofAdd]="id"></a>
+    </div>
+  </div>
 </div>

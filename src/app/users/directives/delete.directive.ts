@@ -1,4 +1,3 @@
-import { UsersService } from './../users.service';
 import {
   Directive,
   Input,
@@ -8,6 +7,7 @@ import {
   ElementRef,
 } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { UsersService } from './../users.service';
 
 @Directive({
   selector: '[mofDelete]',
