@@ -9,15 +9,17 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { UsersComponent } from './users/components/users.component';
-import { UserComponent } from './users/components/user.component';
-import { MyContactsComponent } from './users/components/my-contacts.component';
-import { ProfileComponent } from './users/components/profile.component';
+import { UsersComponent } from './users/components/users/users.component';
+import { UserComponent } from './users/components/user/user.component';
+import { MyContactsComponent } from './users/components/my-contacts/my-contacts.component';
+import { ProfileComponent } from './users/components/profile/profile.component';
 import { ContainerComponent } from './users/components/container.component';
 import { SearchComponent } from './users/components/search.component';
-import { NavbarComponent } from './users/components/navbar.component';
+import { NavbarComponent } from './users/components/navbar/navbar.component';
 import { DeleteDirective } from './users/directives/delete.directive';
 import { AddDirective } from './users/directives/add.directive';
+import { RemoveUserDirective } from './users/directives/remove-user.directive';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { AddDirective } from './users/directives/add.directive';
     SearchComponent,
     NavbarComponent,
     DeleteDirective,
-    AddDirective
+    AddDirective,
+    RemoveUserDirective
   ],
   imports: [
     BrowserModule,

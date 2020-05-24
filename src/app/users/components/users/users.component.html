@@ -1,0 +1,17 @@
+<div *ngIf=" users; else loading">
+  <section class="user">
+    <div class="container">
+      <h3 class="title">All contacts</h3>
+      <div class="search-user">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+          placeholder="Start searching" />
+      </div>
+      <mof-user *ngFor="let user of users | filter: searchText trackBy: trackByFn " [user]="user" class="example-item">
+      </mof-user>
+    </div>
+  </section>
+</div>
+
+<ng-template #loading>
+  <mof-loading isLoading="loading"></mof-loading>
+</ng-template>

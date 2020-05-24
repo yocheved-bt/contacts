@@ -1,0 +1,35 @@
+.container {
+  padding: 5%;
+}
+.container .img {
+  text-align: right;
+  padding-right: 50px;
+}
+.details {
+  border-left: 3px solid #ded4da;
+  padding-left: 40px;
+}
+.details p {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.info {
+  margin-top: 30px;
+}
+.info b {
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.name {
+  padding-bottom: 15px;
+}
+
+.img-rounded {
+  width: 250px;
+}
+.title {
+  color: #555;
+  text-align: center;
+  padding-bottom: 28px;
+}

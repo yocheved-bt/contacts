@@ -1,0 +1,33 @@
+users: {{users}}
+<div *ngIf="users; else loading" class="container">
+  <div class="row card-deck">
+    <div *ngFor="let user of users; trackBy: trackByFn" class="col-lg-3 col-md-4 col-sm-6">
+      <div class="panel panel-default userlist">
+        <div class="panel-body text-center">
+          <div class="userprofile">
+            <div class="userpic">
+              <img [src]="user?.picture?.thumbnail" [alt]="user?.name?.first" class="userpicimg" />
+            </div>
+            <h3 class="username">
+              {{ user?.name?.title }} {{ user?.name?.first }} {{ user?.name?.last }}
+            </h3>
+            <p>{{ user.location.city }}, {{ user.location.state }}</p>
+          </div>
+          <a href="mailto:{{ user?.email }}">{{ user?.email }}</a> <br />
+          <p>{{ user?.cell }}</p>
+        </div>
+        <div class="panel-footer">
+          <a [mofDelete]="user.login.salt"></a>
+          <a [routerLink]="['/user', user.login.salt]"  title="view more details">
+            <i class="fa fa-eye fa-2x"></i> </a>
+            <a [mofRemoveUser]="user.login.salt"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<ng-template #loading>
+  <div style="height:180px; background-color: red;">dddddddddddddddddddddd</div>
+
+  </ng-template>

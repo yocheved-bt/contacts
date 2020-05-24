@@ -1,4 +1,4 @@
-import { UsersService } from './../users.service';
+import { UsersService } from '../users.service';
 import {
   Directive,
   Input,
@@ -10,15 +10,15 @@ import {
 import { ToastrService } from 'ngx-toastr';
 
 @Directive({
-  selector: '[mofDelete]',
+  selector: '[mofRemoveUser]',
 })
-export class DeleteDirective implements OnInit {
-  @Input('mofDelete') id: string;
+export class RemoveUserDirective implements OnInit {
+  @Input('mofRemoveUser') id: string;
 
   @HostListener('click', ['$event'])
-  delete() {
-      this.usersService.deleteUser(this.id);
-      this.toastr.info("Successfully deleted user", "Delete User")
+  remove() {
+      this.usersService.removeUserFromMyUsers(this.id);
+      this.toastr.info("Successfully removed user from your contacts", "Remove User")
   }
 
   constructor(
@@ -34,8 +34,8 @@ export class DeleteDirective implements OnInit {
   addStyleIcon() {
     const tagIcon = this.rendrer.createElement('i');
     this.rendrer.addClass(tagIcon, "fa" );
-    this.rendrer.addClass(tagIcon, "fa-trash" );
+    this.rendrer.addClass(tagIcon, "fa-user-times" );
     this.rendrer.appendChild(this.hostElement.nativeElement , tagIcon);
-    this.rendrer.setAttribute(this.hostElement.nativeElement,"title","delete this user")
+    this.rendrer.setAttribute(this.hostElement.nativeElement,"title","remove this user")
   }
 }

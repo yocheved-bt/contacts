@@ -1,0 +1,21 @@
+.logo{
+  width: 50px;
+}
+.nav-item{
+  cursor: pointer;
+  outline:none;
+}
+.active{
+  font-weight: bold;
+}
+.title{
+color: #555;
+margin-left:40%;
+}
+.grey{
+color: #999;
+font-size: large;
+}
+.nav-link{
+color: #555 !important;
+}
